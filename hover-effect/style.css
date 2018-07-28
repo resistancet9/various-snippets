@@ -1,0 +1,70 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #efefef;
+}
+
+.container {
+  display: none;
+  width: 400px;
+  height: 200px;
+  background: #f7f7f7;
+  margin: 100px auto;
+  box-shadow: 0 10px 30px #00000010;
+  border-radius: 6px;
+  position: relative;
+  backface-visibility: hidden;
+}
+
+.container::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background: #f7f7f7;
+  left: 50%;
+  top: -5px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+span.hover {
+  display: block;
+  text-align: center;
+  background: #000;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  width: 100px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+span.hover:hover + .container {
+  display: block;
+  animation-name: animateIn;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-fill-mode: backwards;
+}
+
+@keyframes animateIn {
+  0% {
+    transform: scale(0.9) translateY(-100px);
+    opacity: 0;
+  }
+
+  60% {
+    transform: scale(1.04);
+  }
+
+  100% {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
